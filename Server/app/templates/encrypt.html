@@ -1,0 +1,17 @@
+<!-- templates/profile.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">File Encrypt</h1>
+<section class="section">
+    <div class="container">
+    <form role="form" method="POST" action="/success" enctype="multipart/form-data">
+      <p><input type="file" name="file"></p>
+      <p><input type="text" name="secret" placeholder="Enter Secret"></p>
+      <p><input type="text" name="message" placeholder="Enter the message"></p>
+      <p><input type="submit" value="Submit"></p>
+    </form>
+</div>
+</section>
+{% endblock %}
