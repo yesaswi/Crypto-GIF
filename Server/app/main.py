@@ -58,12 +58,14 @@ def success():
 def decryptsuccess():
     if request.method == 'POST':  
         f = request.files['file']
-        filename = "encrypt.png"
+        # filename = "encrypt.png"
         f.save(f.filename)
         secret = request.form['secret']
-        print(secret)
+        # print(secret,filename)
         crypto_steganography = CryptoSteganography(secret)  
-        decryptsecret = crypto_steganography.retrieve(filename)
+        print(crypto_steganography)
+        decryptsecret = crypto_steganography.retrieve(f.filename)
+        print(decryptsecret)
         # return render_template("decryptsuccess.html", name = decryptsecret)
         print(type(decryptsecret))
         return jsonify(decryptsecret)
