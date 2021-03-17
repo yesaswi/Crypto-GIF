@@ -73,7 +73,7 @@ export default class App extends React.Component {
   
   handleDecrypt  = async () => {
     console.log("Uploading to server.....");
-    await fetch("http://192.168.0.123:5000/decryptsuccess", {
+    await fetch("http://192.168.0.168:5000/decryptsuccess", {
       method: "POST",
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -94,7 +94,7 @@ export default class App extends React.Component {
 
   handleEncrypt = async () => {
     console.log("Uploading to server.....");
-    await fetch("http://192.168.0.123:5000/success", {
+    await fetch("http://192.168.0.168:5000/success", {
       method: "POST",
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -128,11 +128,12 @@ export default class App extends React.Component {
       console.log(typeof(date));
       this.setState({ currentDate: date });
       console.log("Time", this.state.currentDate);
-    await RNFetchBlob.config({
+    
+      await RNFetchBlob.config({
       fileCache: false,
       appendExt: 'png',
       // path: Platform.OS === 'ios' ? this.state.photo.uri.replace('file://', '') : this.state.photo.uri,
-      path: Platform.OS === "android" ?  RNFetchBlob.fs.dirs.PictureDir + "/" + this.state.currentDate +".png" : photo.uri.replace("file://", "")
+      path: Platform.OS === "android" ?  RNFetchBlob.fs.dirs.PictureDir + "/" + this.state.currentDate +".png" : this.state.photo.uri.replace("file://", "")
       // addAndroidDownloads: {
       //   title: "encrypted.png", 
       //   description: `Download Encrypted`,
@@ -140,7 +141,7 @@ export default class App extends React.Component {
       //   notification: false,
       // }
     })
-      .fetch('GET', "http://192.168.0.123:5000/encrypt.png")
+      .fetch('GET', "http://192.168.0.168:5000/encrypt.png")
       .then(res => {
         // console.log(res.data);
         if((Platform.OS === "android")){
@@ -151,7 +152,7 @@ export default class App extends React.Component {
         }
         // console.log("LOLOLO",RNFetchBlob.wrap(decodeURIComponent(res.data)))
         else{
-          CameraRoll.save(res.data)
+           CameraRoll.save(res.data, 'photo')
           .then(res => console.log(res))
           .catch(err => console.log(err))
         }
