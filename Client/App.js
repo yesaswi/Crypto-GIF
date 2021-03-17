@@ -73,7 +73,7 @@ export default class App extends React.Component {
   
   handleDecrypt  = async () => {
     console.log("Uploading to server.....");
-    await fetch("http://192.168.0.168:5000/decryptsuccess", {
+    await fetch("http://18.234.107.188:5000/decryptsuccess", {
       method: "POST",
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -94,7 +94,7 @@ export default class App extends React.Component {
 
   handleEncrypt = async () => {
     console.log("Uploading to server.....");
-    await fetch("http://192.168.0.168:5000/success", {
+    await fetch("http://18.234.107.188:5000/success", {
       method: "POST",
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -141,7 +141,7 @@ export default class App extends React.Component {
       //   notification: false,
       // }
     })
-      .fetch('GET', "http://192.168.0.168:5000/encrypt.png")
+      .fetch('GET', "http://18.234.107.188:5000/encrypt.png")
       .then(res => {
         // console.log(res.data);
         if((Platform.OS === "android")){
