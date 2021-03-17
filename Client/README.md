@@ -3,9 +3,6 @@
 
 - [Prerequisites - Mac OS](#Prerequisites)
 - [Initial App Setup](#Setup)
-- [Facebook Login SDK Setup](#Facebook)
-- [Google Login SDK Setup](#Google)
-- [Environment Setup](#Environment)
 - [Metro](#Metro)
 - [Android](#Android)
 - [iOS](#iOS)
