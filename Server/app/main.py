@@ -12,6 +12,7 @@ import os
 
 main = Blueprint('main', __name__)
 
+
 @main.route('/')
 def index():
     return render_template('index.html')
@@ -59,12 +60,14 @@ def decryptsuccess():
     if request.method == 'POST':  
         f = request.files['file']
         # filename = "encrypt.png"
-        f.save(f.filename)
+        f.save("decrypt")
         secret = request.form['secret']
-        # print(secret,filename)
+        print(secret)
         crypto_steganography = CryptoSteganography(secret)  
         print(crypto_steganography)
-        decryptsecret = crypto_steganography.retrieve(f.filename)
+        print("Before decrypting")
+        decryptsecret = crypto_steganography.retrieve("decrypt")
+        print("After decrypting")
         print(decryptsecret)
         # return render_template("decryptsuccess.html", name = decryptsecret)
         print(type(decryptsecret))
